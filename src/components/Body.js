@@ -25,7 +25,7 @@ const Body = () => {
     return (
         <div className='mt-5'>
             <Header />
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+            <div className='max-w-7xl mx-auto mt-10 px-4 sm:px-6 lg:px-8'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6'>
                     {restaurantData.map((hotel) => (
                         <Link to={"/restaurants/" + hotel.info.id} key={hotel.info.id}>
