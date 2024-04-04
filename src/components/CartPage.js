@@ -4,20 +4,26 @@ import { FOOD_ITEM_PIC } from '../utils/constants';
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinusSmall } from "react-icons/hi2";
 import { useDispatch } from 'react-redux';
-import { removeItemFromCart } from './redux/cartSlice';
+import { clearAllItemsFromCart, removeItemFromCart } from './redux/cartSlice';
 
 const CartPage = () => {
+    
     const [itemCounts, setItemCounts] = useState({}); // State to store counts for each item
+
     const cartItems = useSelector((store) => store.cart?.selectedItems);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (cartItems) {
             let counts = {};
             cartItems.forEach(item => {
+                // console.log(item)
                 counts[item.id] = item.count;
+                // console.log(counts)
             });
             setItemCounts(counts);
+            // console.log("useEffect is called")
         }
     }, [cartItems]);
 
@@ -26,6 +32,7 @@ const CartPage = () => {
             ...prevCounts,
             [itemId]: (prevCounts[itemId] || 0) + 1
         }));
+        console.log(itemCounts)
     };
 
     const handleDecreaseCount = (itemId) => {
@@ -52,10 +59,15 @@ const CartPage = () => {
         return Math.floor(grandTotal);
     };
 
+    const handleClearAllItemsFromCart = () => {
+        dispatch(clearAllItemsFromCart())
+    }
     return (
         <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 2xl:px-20">
             {cartItems.length === 0 ? (
-                <span className='text-2xl font-bold text-center'>Cart is empty</span>
+                <div className='text-center mt-32'>
+                    <span className='text-3xl font-bold'>Cart is empty</span>
+                </div>
             ) : (
                 <div className='w-full max-w-3xl mx-auto mt-20'>
                     {cartItems.map((cartItem, index) => (
@@ -69,12 +81,13 @@ const CartPage = () => {
                                 <span className='text-lg sm:text-xl'>{itemCounts[cartItem.id] || 0}</span>
                                 <span className='cursor-pointer' onClick={() => handleIncreaseCount(cartItem.id)}><GoPlus /></span>
                             </div>
-                            <div className='mt-4 sm:mt-0'>
-                                <p className='text-base'>{Math.floor(calculateTotalAmount(cartItem))}</p>
+                            <div className='mt-4 mb-3 sm:mt-0'>
+                                <p className='text-base'>₹{Math.floor(calculateTotalAmount(cartItem))}</p>
                             </div>
                         </div>
                     ))}
-                    <div className="text-right mt-5">
+                    <div className="text-right mt-5 flex justify-between">
+                        <button className='bg-red-800 px-4 py-2 rounded-lg outline-none text-black font-bold' onClick={handleClearAllItemsFromCart}>Clear cart</button>
                         <p className="text-lg font-bold">Grand Total: ₹{calculateGrandTotal()}</p>
                     </div>
                 </div>
@@ -84,3 +97,4 @@ const CartPage = () => {
 }
 
 export default CartPage;
+ 

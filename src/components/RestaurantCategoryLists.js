@@ -1,5 +1,3 @@
-// RestaurantCategoryLists.jsx
-
 import React from 'react';
 import { FOOD_ITEM_PIC } from '../utils/constants';
 import { MdStars } from 'react-icons/md';
@@ -15,7 +13,7 @@ const RestaurantCategoryLists = ({ itemDetails }) => {
     };
 
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-3'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4 py-3 mt-5'>
             {itemCards.map((item) => (
                 <div className='bg-white rounded-lg shadow-lg overflow-hidden' key={item.card?.info?.id}>
                     <div className='p-4'>
@@ -42,4 +40,4 @@ const RestaurantCategoryLists = ({ itemDetails }) => {
     );
 };
 
-export default RestaurantCategoryLists;
+export default RestaurantCategoryLists
