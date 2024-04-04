@@ -1,5 +1,3 @@
-// RestaurantsHomePage.jsx
-
 import React from 'react';
 import { RESTAURANT_LOGO } from '../utils/constants';
 import { MdStars } from 'react-icons/md';
@@ -11,7 +9,7 @@ const RestaurantsHomePage = ({ hotelData }) => {
         <div className='bg-white rounded-lg shadow-lg overflow-hidden'>
             <img className='h-56 w-full object-cover' src={RESTAURANT_LOGO + cloudinaryImageId} alt='hotel_logo' />
             <div className='p-4'>
-                <h1 className='text-xl font-bold'>{name}</h1>
+                <h1 className='text-lg font-bold'>{name}</h1>
                 <div className='flex items-center mt-2'>
                     <MdStars className='text-yellow-400 mr-1' />
                     <span className='font-semibold'>{avgRating}</span>
@@ -25,4 +23,4 @@ const RestaurantsHomePage = ({ hotelData }) => {
     );
 };
 
-export default RestaurantsHomePage;
+export default RestaurantsHomePage

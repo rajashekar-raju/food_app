@@ -1,5 +1,3 @@
-// RestaurantCategories.jsx
-
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import RestaurantCategoryLists from './RestaurantCategoryLists';

@@ -1,11 +1,10 @@
-// Body.jsx
-
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import RestaurantsHomePage from './RestaurantsHomePage';
 import { Link } from 'react-router-dom';
 
 const Body = () => {
+
     const [restaurantData, setRestaurantData] = useState([]);
 
     useEffect(() => {
@@ -23,7 +22,7 @@ const Body = () => {
     };
 
     return (
-        <div className='mt-5'>
+        <div>
             <Header />
             <div className='max-w-7xl mx-auto mt-10 px-4 sm:px-6 lg:px-8'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6'>
@@ -38,4 +37,4 @@ const Body = () => {
     );
 };
 
-export default Body;
+export default Body
