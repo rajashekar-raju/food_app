@@ -5,12 +5,17 @@ import RestaurantDetails from "./components/RestaurantDetails";
 import CartPage from "./components/CartPage";
 import { Provider } from "react-redux";
 import appStore from "./components/redux/appStore";
+import LoginPage from "./components/LoginPage";
 
 function App() {
 
   const appRouter = createBrowserRouter([
     {
       path:"/",
+      element:<LoginPage/>
+    },
+    {
+      path:"/browse",
       element:<Body/>
     },
     {
