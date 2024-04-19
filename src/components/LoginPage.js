@@ -12,7 +12,8 @@ const LoginPage = () => {
     const password = useRef(null)
     const navigate = useNavigate()
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const emailError1 = validation(email.current.value,password.current.value)
         setErrorMessage(emailError1)
 
@@ -72,7 +73,7 @@ const LoginPage = () => {
         </div>
         {errorMessage && <span className='text-red-800 text-xs font-bold'>{errorMessage}</span>}
         <div>
-            <button onClick={handleSubmit} className='px-4 py-2 rounded-lg outline-none bg-green-800'>submit</button>
+            <button type='button' onClick={handleSubmit} className='px-4 py-2 rounded-lg outline-none bg-green-800'>submit</button>
         </div>
         <p className='mt-3 cursor-pointer underline' onClick={handleLoginLogout}>{signIn ? "new user signUp" : "already user signIn"}</p>
     </div>
