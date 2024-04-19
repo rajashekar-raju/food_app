@@ -13,7 +13,7 @@ const LoginPage = () => {
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         const emailError1 = validation(email.current.value,password.current.value)
         setErrorMessage(emailError1)
 

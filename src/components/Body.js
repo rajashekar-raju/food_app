@@ -20,7 +20,7 @@ const Body = () => {
             console.error('Error fetching data:', error);
         }
     };
-
+   console.log(restaurantData)
     return (
         <div>
             <Header />
