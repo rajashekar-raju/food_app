@@ -17,30 +17,37 @@ const LoginPage = () => {
         const emailError1 = validation(email.current.value,password.current.value)
         setErrorMessage(emailError1)
 
+        console.log("Submit clicked", emailError1)
+
         if(!signIn) {
-            
+            console.log("!signIn block");
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
+                console.log("Signup block", {userCredential})
                 // Signed up 
                 const user = userCredential.user;
                 // ...
                 navigate("/browse")
             })
             .catch((error) => {
+                console.log("Signup failed", error);
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // ..
             });
-}
+        }
         else {
-                signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-                .then((userCredential) => {
+            console.log("SignIn block");
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                    console.log("Signin success", {userCredential});
                     // Signed in 
                     const user = userCredential.user;
                     // ...
                     navigate("/browse")
                 })
                 .catch((error) => {
+                    console.log("Signin failed", error);
                     const errorCode = error.code;
                     const errorMessage = error.message;
                 });
